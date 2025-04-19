@@ -1,4 +1,5 @@
 #include "libft.a"
+#include "ft_printf.h"
 #include <stdarg.h>
 
 int	ft_print_s(char *str)

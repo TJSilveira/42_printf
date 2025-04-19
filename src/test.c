@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "ft_printf.h"
 
 int	main()
 {
-	printf("Something %z");
+	ft_print_p("This");
 }

@@ -6,9 +6,20 @@ int	main()
 	int	counter;
 
 	counter = 0;
+	printf("=======[ft_print_p]=======\n\n");
 	counter += ft_print_p("This");
-	write(1, "\n", 1);
+	printf("\nCounter: %i\n", counter);
+
+	printf("=======[ft_print_s]=======\n\n");
 	counter += ft_print_s("This");
-	write(1, "\n", 1);
+	printf("\nCounter: %i\n", counter);
+
+	printf("=======[ft_print_c]=======\n\n");
+	counter += ft_print_c('c');
+	printf("\nCounter: %i\n", counter);
+
+	printf("=======[ft_print_int]=======\n\n");
+	counter += ft_print_int(-2147483648);
+	printf("\nCounter %i\n", counter);
 
 }

@@ -44,4 +44,6 @@ clean:
 fclean: clean
 	rm -f ${NAME} test
 
+retest: fclean test 
+
 .PHONY: all clean fclean re

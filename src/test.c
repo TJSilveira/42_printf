@@ -26,4 +26,14 @@ int	main()
 	counter += ft_print_u(4294967295);
 	printf("\nCounter %i\n", counter);
 
+	printf("=======[ft_print_x]=======\n\n");
+	counter += ft_print_x(798455);
+	printf("\nCounter %i\n", counter);
+	printf("Expected: %x\n", 798455);
+	
+	printf("=======[ft_print_X]=======\n\n");
+	counter += ft_print_X(798455);
+	printf("\nCounter %i\n", counter);
+	printf("Expected: %x\n", 798455);
+
 }

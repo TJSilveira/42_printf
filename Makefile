@@ -14,7 +14,9 @@ SRC_FILES = ft_print_c.c \
 			ft_print_int.c \
 			ft_print_p.c \
 			ft_print_s.c \
-			ft_print_u.c
+			ft_print_u.c \
+			ft_print_x.c \
+			ft_print_X.c
 
 SRC_TEST = $(addprefix $(SRC_DIR),test.c)
 SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))

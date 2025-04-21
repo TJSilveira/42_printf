@@ -8,12 +8,10 @@ int	ft_print_func(char option)
 		return (&ft_print_s);
 	else if (option == 'p')
 		return (&ft_print_p);
-	else if (option == 'd')
-		return ;
-	else if (option == 'i')
-		return ;
+	else if (option == 'd' || option == 'i')
+		return (&ft_print_int);
 	else if (option == 'u')
-		return ;
+		return (&ft_print_u);
 	else if (option == 'x')
 		return ;
 	else if (option == 'X')

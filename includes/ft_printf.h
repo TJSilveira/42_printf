@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "libft.h"
 
 
 int	ft_print_c(char c);

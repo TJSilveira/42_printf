@@ -1,6 +1,4 @@
-#include "libft.a"
 #include "ft_printf.h"
-#include <stdarg.h>
 
 int	ft_print_func(char option)
 {
@@ -9,7 +7,7 @@ int	ft_print_func(char option)
 	else if (option == 's')
 		return (&ft_print_s);
 	else if (option == 'p')
-		return ;
+		return (&ft_print_p);
 	else if (option == 'd')
 		return ;
 	else if (option == 'i')
@@ -41,11 +39,8 @@ int ft_printf(const char *format, ...)
 			i++;
 			if (is_incset(format[i], "cspdiuxX%"))
 			{
-				res_len += ;
+				res_len += ft_print_func(format[i]);
 			}
-			
-
-
 		}
 		
 		res_len++;

@@ -10,7 +10,8 @@ LIBFT = $(LIBFT_DIR)libft.a
 
 SRC_DIR = ./src/
 
-SRC_FILES = ft_print_c.c \
+SRC_FILES = ft_printf.c \
+			ft_print_c.c \
 			ft_print_int.c \
 			ft_print_p.c \
 			ft_print_s.c \

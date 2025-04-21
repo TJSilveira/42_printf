@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include "libft.h"
 
-
+int ft_printf(const char *format, ...);
 int	ft_print_c(char c);
 int	ft_print_s(char *str);
 int	ft_print_p(void *str);

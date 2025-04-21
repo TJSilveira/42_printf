@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	ft_print_func(char option)
+void	*ft_print_func(char option)
 {
 	if (option == 'c')
 		return (&ft_print_c);
@@ -13,14 +13,11 @@ int	ft_print_func(char option)
 	else if (option == 'u')
 		return (&ft_print_u);
 	else if (option == 'x')
-		return ;
+		return (&ft_print_x);
 	else if (option == 'X')
-		return ;
-	else if (option == '%')
-		return ;
+		return (&ft_print_X);
+	return NULL;
 }
-
-
 
 int ft_printf(const char *format, ...)
 {
@@ -28,6 +25,7 @@ int ft_printf(const char *format, ...)
 	int		res_len;
 	int		i;
 	
+	va_start(ap, format);
 	res_len = 0;
 	i = 0;
 	while (format[i])
@@ -35,13 +33,17 @@ int ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (is_incset(format[i], "cspdiuxX%"))
+			if (is_incset(format[i], "cspdiuxX"))
+				res_len += ((int (*)(void *))ft_print_func(format[i]))(va_arg(ap, void *));
+			/*else if(1)
 			{
-				res_len += ft_print_func(format[i]);
-			}
+			}*/
+			else
+				res_len += write(1, &format[i], 1);
 		}
-		
-		res_len++;
+		else
+			res_len += write(1, &format[i], 1);
 		i++;
 	}
+	return (res_len);
 }

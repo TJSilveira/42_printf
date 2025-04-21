@@ -22,4 +22,8 @@ int	main()
 	counter += ft_print_int(-2147483648);
 	printf("\nCounter %i\n", counter);
 
+	printf("=======[ft_print_u]=======\n\n");
+	counter += ft_print_u(4294967295);
+	printf("\nCounter %i\n", counter);
+
 }

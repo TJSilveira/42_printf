@@ -16,11 +16,11 @@ int	ft_print_p(void *str)
 	nbr = (unsigned long int)str;
 	while (nbr>=16)
 	{
-		array_temp[i] = "0123456789abcedf"[nbr % 16];
+		array_temp[i] = "0123456789abcdef"[nbr % 16];
 		nbr = nbr/16;
 		i++;
 	}
-	array_temp[i] = "0123456789abcedf"[nbr % 16];
+	array_temp[i] = "0123456789abcdef"[nbr % 16];
 	size = i + 3;
 	write(1, "0x", 2);
 	while ((i) >= 0)

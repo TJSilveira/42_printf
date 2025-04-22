@@ -1,22 +1,78 @@
 #include "ft_printf.h"
 
-void	*ft_print_func(char option)
+void	*ft_print_func(t_format *spec)
 {
-	if (option == 'c')
+	if (spec->specifier == 'c')
 		return (&ft_print_c);
-	else if (option == 's')
+	else if (spec->specifier == 's')
 		return (&ft_print_s);
-	else if (option == 'p')
+	else if (spec->specifier == 'p')
 		return (&ft_print_p);
-	else if (option == 'd' || option == 'i')
+	else if (spec->specifier == 'd' || spec->specifier == 'i')
 		return (&ft_print_int);
-	else if (option == 'u')
+	else if (spec->specifier == 'u')
 		return (&ft_print_u);
-	else if (option == 'x')
+	else if (spec->specifier == 'x')
 		return (&ft_print_x);
-	else if (option == 'X')
+	else if (spec->specifier == 'X')
 		return (&ft_print_X);
 	return NULL;
+}
+
+int	add_flg(const char *str, int *i, t_format *format)
+{
+	int	start;
+
+	start = *i;
+	while (str[*i] != ' ' && str[*i] != 0)
+	{
+		printf("This is the char: %c", str[*i]);
+		if (str[*i] == '0' && start == *i)
+		{
+			format->zero_pad = 1;
+			(*i)++;
+		}
+		else if (str[*i] == '-' && start == *i)
+		{
+			format->left_just = 1;
+			(*i)++;
+		}
+		printf("Result of is digit: %i\n",ft_isdigit(str[*i]));
+		else if (ft_isdigit(str[*i]) && format->precision_set == 0)
+		{
+			format->width = ft_atoi_simple(str, i);
+			printf("\nThis is the width: %i\n",format->width);
+			(*i)++;
+		}
+		else if (str[*i] == '.')
+		{
+			format->precision_set = 1;
+			(*i)++;
+		}
+		else if (ft_isdigit(str[*i]) && format->precision_set == 1)
+		{
+			format->precision = ft_atoi_simple(str, i);
+			(*i)++;
+		}
+		else if (is_incset(str[*i], "cspdiuxX"))
+		{
+			format->specifier = str[*i];
+			return (1);
+		}
+		else
+			return (0);
+	}
+	return (0);
+}
+
+void	set_spec_zero(t_format	*spec)
+{
+	spec->left_just = 0;
+	spec->precision = 0;
+	spec->precision_set = 0;
+	spec->specifier = 0;
+	spec->width = 0;
+	spec->zero_pad = 0;
 }
 
 int ft_printf(const char *format, ...)
@@ -24,6 +80,7 @@ int ft_printf(const char *format, ...)
 	va_list	ap;
 	int		res_len;
 	int		i;
+	t_format	spec;
 	
 	va_start(ap, format);
 	res_len = 0;
@@ -33,11 +90,8 @@ int ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (is_incset(format[i], "cspdiuxX"))
-				res_len += ((int (*)(void *))ft_print_func(format[i]))(va_arg(ap, void *));
-			/*else if(1)
-			{
-			}*/
+			if (add_flg(format, &i, &spec))
+				res_len += ((int (*)(void *, t_format *))ft_print_func(&spec))(va_arg(ap, void *), &spec);
 			else
 				res_len += write(1, &format[i], 1);
 		}

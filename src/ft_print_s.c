@@ -6,18 +6,9 @@ int	ft_print_s(char *str, t_format *spec)
 	int	i;
 	int	len;
 
-	i = 0;
 	len = ft_strlen(str);
-	while (i < spec->width - len && spec->left_just == 0)
-	{
-		write(1, " ", 1);
-		i++;
-	}
+	i = ft_print_width_left(len, spec);
 	write(1, str, len);
-	while (i < spec->width - len && spec->left_just == 1)
-	{
-		write(1, " ", 1);
-		i++;
-	}
+	i += ft_print_width_right(len, spec);
 	return (len + i);
 }

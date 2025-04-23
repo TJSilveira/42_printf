@@ -194,4 +194,13 @@ int	main()
 	counter_test += ft_printf("This %%-5c: %-5c\n",'c');
 	counter_oficial += printf("This %%-5c: %-5c\n",'c');
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+
+	printf("=======[ft_print_s]=======\n\n");
+	counter_test += ft_printf("This %%5s: %5s\n","This");
+	counter_oficial += printf("This %%5s: %5s\n","This");
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-5s: %-5s\n","This");
+	counter_oficial += printf("This %%-5s: %-5s\n","This");
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+
 }

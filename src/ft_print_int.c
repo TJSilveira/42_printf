@@ -1,23 +1,27 @@
 #include "ft_printf.h"
 
-int	ft_print_int(int nbr)
+int	ft_print_int(int nbr, t_format *spec)
 {
 	int counter;
+	int	nbr_temp;
 
-	ft_putnbr_fd(nbr, 1);
 	counter = 0;
-	if (nbr == -2147483648)
+	nbr_temp = nbr;
+	if (nbr_temp == -2147483648)
 		return (11);
-	if (nbr < 0)
+	if (nbr_temp < 0)
 	{
 		counter++;
-		nbr = -nbr;
+		nbr_temp = -nbr_temp;
 	}
-	while (nbr>9)
+	while (nbr_temp>9)
 	{
-		nbr = nbr/10;
+		nbr_temp = nbr_temp/10;
 		counter++;
 	}
 	counter++;
+	counter += ft_print_width_left(counter, spec);
+	ft_putnbr_fd(nbr, 1);
+	counter += ft_print_width_right(counter, spec);
 	return (counter);
 }

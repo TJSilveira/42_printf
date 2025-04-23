@@ -26,7 +26,6 @@ int	add_flg(const char *str, int *i, t_format *format)
 	start = *i;
 	while (str[*i] != ' ' && str[*i] != 0)
 	{
-		printf("This is the char: %c", str[*i]);
 		if (str[*i] == '0' && start == *i)
 		{
 			format->zero_pad = 1;
@@ -37,11 +36,9 @@ int	add_flg(const char *str, int *i, t_format *format)
 			format->left_just = 1;
 			(*i)++;
 		}
-		printf("Result of is digit: %i\n",ft_isdigit(str[*i]));
 		else if (ft_isdigit(str[*i]) && format->precision_set == 0)
 		{
 			format->width = ft_atoi_simple(str, i);
-			printf("\nThis is the width: %i\n",format->width);
 			(*i)++;
 		}
 		else if (str[*i] == '.')
@@ -85,6 +82,7 @@ int ft_printf(const char *format, ...)
 	va_start(ap, format);
 	res_len = 0;
 	i = 0;
+	set_spec_zero(&spec);
 	while (format[i])
 	{
 		if (format[i] == '%')

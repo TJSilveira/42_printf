@@ -190,5 +190,8 @@ int	main()
 	printf("=======[ft_print_c]=======\n\n");
 	counter_test += ft_printf("This %%5c: %5c\n",'c');
 	counter_oficial += printf("This %%5c: %5c\n",'c');
-	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);	
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-5c: %-5c\n",'c');
+	counter_oficial += printf("This %%-5c: %-5c\n",'c');
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 }

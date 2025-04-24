@@ -248,4 +248,32 @@ int	main()
 	counter_test += ft_printf("This %%-5u: %-5u\n",213548);
 	counter_oficial += printf("This %%-5u: %-5u\n",213548);
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+
+	printf("=======[ft_print_x]=======\n\n");
+	counter_test += ft_printf("This %%25x: %25x\n",21354489);
+	counter_oficial += printf("This %%25x: %25x\n",21354489);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%5x: %5x\n",21354489);
+	counter_oficial += printf("This %%5x: %5x\n",21354489);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-25x: %-25x\n",21354489);
+	counter_oficial += printf("This %%-25x: %-25x\n",21354489);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-5x: %-5x\n",21354489);
+	counter_oficial += printf("This %%-5x: %-5x\n",21354489);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+
+	printf("=======[ft_print_X]=======\n\n");
+	counter_test += ft_printf("This %%25X: %25X\n",21354489);
+	counter_oficial += printf("This %%25X: %25X\n",21354489);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%5X: %5X\n",21354489);
+	counter_oficial += printf("This %%5X: %5X\n",21354489);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-25X: %-25X\n",21354489);
+	counter_oficial += printf("This %%-25X: %-25X\n",21354489);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-5X: %-5X\n",21354489);
+	counter_oficial += printf("This %%-5X: %-5X\n",21354489);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 }

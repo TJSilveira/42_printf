@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	ft_print_x(unsigned int nbr)
+int	ft_print_x(unsigned int nbr, t_format *spec)
 {
 	char	array_temp[50];
 	int		i;
@@ -15,7 +15,9 @@ int	ft_print_x(unsigned int nbr)
 	}
 	array_temp[i] = "0123456789abcdef"[nbr % 16];
 	size = i + 1;
+	size += ft_print_width_left(size, spec);
 	while ((i) >= 0)
 		write(1, &array_temp[i--], 1);
+	size += ft_print_width_right(size, spec);
 	return (size);
 }

@@ -235,4 +235,17 @@ int	main()
 	counter_oficial += printf("This %%-5p: %-5p\n",ptr);
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 
+	printf("=======[ft_print_u]=======\n\n");
+	counter_test += ft_printf("This %%25u: %25u\n",213548);
+	counter_oficial += printf("This %%25u: %25u\n",213548);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%5u: %5u\n",213548);
+	counter_oficial += printf("This %%5u: %5u\n",213548);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-25u: %-25u\n",213548);
+	counter_oficial += printf("This %%-25u: %-25u\n",213548);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-5u: %-5u\n",213548);
+	counter_oficial += printf("This %%-5u: %-5u\n",213548);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 }

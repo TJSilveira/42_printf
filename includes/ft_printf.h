@@ -21,7 +21,7 @@ int	ft_print_c(char c, t_format *spec);
 int	ft_print_s(char *str, t_format *spec);
 int	ft_print_p(void *str, t_format *spec);
 int	ft_print_int(int nbr, t_format *spec);
-int	ft_print_u(unsigned int nbr);
+int	ft_print_u(unsigned int nbr, t_format *spec);
 int	ft_print_x(unsigned int nbr);
 int	ft_print_X(unsigned int nbr);
 int	ft_atoi_simple(const char *nptr, int *i);

@@ -3,12 +3,10 @@
 int	ft_print_int(int nbr, t_format *spec)
 {
 	int counter;
-	int	nbr_temp;
+	long int	nbr_temp;
 
 	counter = 0;
 	nbr_temp = nbr;
-	if (nbr_temp == -2147483648)
-		return (11);
 	if (nbr_temp < 0)
 	{
 		counter++;

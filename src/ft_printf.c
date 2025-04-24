@@ -26,6 +26,7 @@ int	add_flg(const char *str, int *i, t_format *format)
 	start = *i;
 	while (str[*i] != ' ' && str[*i] != 0)
 	{
+		// printf("Zero pad: %i, Left_just: %i, Width: %i, Prec set: %i, Prec: %i, Spec: %i\n\n", format->zero_pad, format->left_just, format->width, format->precision_set, format->precision, format->specifier);
 		if (str[*i] == '0' && start == *i)
 		{
 			format->zero_pad = 1;

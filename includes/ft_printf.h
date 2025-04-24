@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "libft.h"
+#define BIGGER(x,y) ((x<=y)*y+(x>y)*x)
 
 typedef struct s_format
 {
@@ -29,5 +30,6 @@ int	ft_atoi_check(const char *nptr, int *i);
 int	add_flg(const char *str, int *i, t_format *format);
 int	ft_print_width_left(int size, t_format *spec);
 int	ft_print_width_right(int size, t_format *spec);
+int	ft_print_prec(int size, t_format *spec);
 
 #endif

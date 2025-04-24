@@ -5,10 +5,9 @@ int	main()
 {
 	int		counter_test;
 	int		counter_oficial;
-	//char	*ptr;
-
+	char	*ptr;
 	
-	//ptr = "This";
+	ptr = "This";
 	/*
 	printf("%0x\n%x\n", 0, 486);
 	printf("%.00000005d\n%d\n", 486, 486);
@@ -84,7 +83,6 @@ int	main()
 	counter_oficial = 0;
 	counter_oficial += printf("This %%.d: %.d\n",0);
 	printf("Result: %i\n", counter_oficial);
-
 
 	printf("=======[.nbr - int]=======\n\n");
 	counter_oficial = 0;
@@ -188,8 +186,8 @@ int	main()
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);*/
 
 	printf("=======[ft_print_c]=======\n\n");
-	counter_test += ft_printf("This %%5c: %5c\n",'c');
-	counter_oficial += printf("This %%5c: %5c\n",'c');
+	counter_test += ft_printf("This %%25c: %25c\n",'c');
+	counter_oficial += printf("This %%25c: %25c\n",'c');
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 	counter_test += ft_printf("This %%-5c: %-5c\n",'c');
 	counter_oficial += printf("This %%-5c: %-5c\n",'c');
@@ -210,8 +208,8 @@ int	main()
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 
 	printf("=======[ft_print_int]=======\n\n");
-	counter_test += ft_printf("This %%5d: %5d\n",257);
-	counter_oficial += printf("This %%5d: %5d\n",257);
+	counter_test += ft_printf("This %%25d: %25d\n",257);
+	counter_oficial += printf("This %%25d: %25d\n",257);
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 	counter_test += ft_printf("This %%5d: %5d\n",2578787);
 	counter_oficial += printf("This %%5d: %5d\n",2578787);
@@ -223,5 +221,18 @@ int	main()
 	counter_oficial += printf("This %%-5d: %-5d\n",2578787);
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 
+	printf("=======[ft_print_p]=======\n\n");
+	counter_test += ft_printf("This %%25p: %25p\n",ptr);
+	counter_oficial += printf("This %%25p: %25p\n",ptr);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%5p: %5p\n",ptr);
+	counter_oficial += printf("This %%5p: %5p\n",ptr);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-25p: %-25p\n",ptr);
+	counter_oficial += printf("This %%-25p: %-25p\n",ptr);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%-5p: %-5p\n",ptr);
+	counter_oficial += printf("This %%-5p: %-5p\n",ptr);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 
 }

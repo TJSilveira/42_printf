@@ -10,7 +10,7 @@ int	ft_atoi_simple(const char *nptr, int *i)
 	while (nptr[*i] >= '0' && nptr[*i] <= '9')
 	{
 		total = total * 10 + nptr[*i] - '0';
-		i++;
+		(*i)++;
 	}
 	return (total);
 }

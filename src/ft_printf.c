@@ -39,7 +39,6 @@ int	add_flg(const char *str, int *i, t_format *format)
 		else if (ft_isdigit(str[*i]) && format->precision_set == 0)
 		{
 			format->width = ft_atoi_simple(str, i);
-			(*i)++;
 		}
 		else if (str[*i] == '.')
 		{
@@ -49,7 +48,6 @@ int	add_flg(const char *str, int *i, t_format *format)
 		else if (ft_isdigit(str[*i]) && format->precision_set == 1)
 		{
 			format->precision = ft_atoi_simple(str, i);
-			(*i)++;
 		}
 		else if (is_incset(str[*i], "cspdiuxX"))
 		{

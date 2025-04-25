@@ -43,6 +43,8 @@ int	ft_print_prec(int size, t_format *spec)
 	// TODO: Implement * option to the function
 	int	i;
 
+	if (spec->precision_set == 0)
+		return (0);
 	if (size > spec->precision)
 		return (0);
 	i = 0;

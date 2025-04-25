@@ -20,14 +20,8 @@ int	ft_print_int(int nbr, t_format *spec)
 	counter++;
 	if (spec->precision_set == 1 && nbr == 0)
 		return (ft_print_width_left(0, spec));
-	else if (spec->precision_set == 1)
-	{
-		counter += ft_print_width_left(counter, spec);
-		counter += ft_print_prec(counter, spec);	
-		ft_putnbr_fd(nbr, 1);
-		return (counter);
-	}
 	counter += ft_print_width_left(counter, spec);
+	counter += ft_print_prec(counter, spec);	
 	ft_putnbr_fd(nbr, 1);
 	counter += ft_print_width_right(counter, spec);
 	return (counter);

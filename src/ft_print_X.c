@@ -8,10 +8,10 @@ int	ft_print_X(unsigned int nbr, t_format *spec)
 	int		size_nbr;
 
 	i = 0;
-	while (nbr>=16)
+	while (nbr >= 16)
 	{
 		array_temp[i] = "0123456789ABCDEF"[nbr % 16];
-		nbr = nbr/16;
+		nbr = nbr / 16;
 		i++;
 	}
 	array_temp[i] = "0123456789ABCDEF"[nbr % 16];

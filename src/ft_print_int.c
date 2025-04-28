@@ -2,8 +2,8 @@
 
 int	ft_print_int(int nbr, t_format *spec)
 {
-	int counter_total;
-	int counter_nbr;
+	int			counter_total;
+	int			counter_nbr;
 	long int	nbr_temp;
 
 	counter_total = 0;
@@ -13,9 +13,9 @@ int	ft_print_int(int nbr, t_format *spec)
 		counter_total++;
 		nbr_temp = -nbr_temp;
 	}
-	while (nbr_temp>9)
+	while (nbr_temp > 9)
 	{
-		nbr_temp = nbr_temp/10;
+		nbr_temp = nbr_temp / 10;
 		counter_total++;
 	}
 	counter_total++;
@@ -23,7 +23,7 @@ int	ft_print_int(int nbr, t_format *spec)
 	if (spec->precision_set == 1 && nbr == 0)
 		return (ft_print_width_left(0, spec));
 	counter_total += ft_print_width_left(counter_total, spec);
-	counter_total += ft_print_prec(counter_nbr, spec);	
+	counter_total += ft_print_prec(counter_nbr, spec);
 	ft_putnbr_fd(nbr, 1);
 	counter_total += ft_print_width_right(counter_total, spec);
 	return (counter_total);

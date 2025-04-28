@@ -2,7 +2,6 @@
 
 int	ft_print_c(char c, t_format *spec)
 {
-	// TODO: Implement * option to the function
 	int	i;
 
 	i = ft_print_width_left(1, spec);

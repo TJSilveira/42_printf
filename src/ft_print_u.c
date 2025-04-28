@@ -2,14 +2,14 @@
 
 int	ft_print_u(unsigned int nbr, t_format *spec)
 {
-	int counter;
+	int				counter;
 	unsigned int	nbr_temp;
 
 	counter = 0;
 	nbr_temp = nbr;
-	while (nbr_temp>9)
+	while (nbr_temp > 9)
 	{
-		nbr_temp = nbr_temp/10;
+		nbr_temp = nbr_temp / 10;
 		counter++;
 	}
 	counter++;

@@ -16,7 +16,7 @@ void	*ft_print_func(t_format *spec)
 		return (&ft_print_x);
 	else if (spec->specifier == 'X')
 		return (&ft_print_X);
-	return NULL;
+	return (NULL);
 }
 
 int	add_flg(const char *str, int *i, t_format *format)
@@ -26,7 +26,6 @@ int	add_flg(const char *str, int *i, t_format *format)
 	start = *i;
 	while (str[*i] != ' ' && str[*i] != 0)
 	{
-		// printf("Zero pad: %i, Left_just: %i, Width: %i, Prec set: %i, Prec: %i, Spec: %i\n\n", format->zero_pad, format->left_just, format->width, format->precision_set, format->precision, format->specifier);
 		if (str[*i] == '0' && start == *i)
 		{
 			format->zero_pad = 1;
@@ -71,13 +70,13 @@ void	set_spec_zero(t_format	*spec)
 	spec->zero_pad = 0;
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list	ap;
-	int		res_len;
-	int		i;
+	va_list		ap;
+	int			res_len;
+	int			i;
 	t_format	spec;
-	
+
 	va_start(ap, format);
 	res_len = 0;
 	i = 0;

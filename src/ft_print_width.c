@@ -2,7 +2,6 @@
 
 int	ft_print_width_left(int size, t_format *a)
 {
-	// TODO: Implement * option to the function
 	int	i;
 
 	if (size > a->width)
@@ -21,7 +20,6 @@ int	ft_print_width_left(int size, t_format *a)
 
 int	ft_print_width_right(int size, t_format *spec)
 {
-	// TODO: Implement * option to the function
 	int	i;
 
 	if (size > spec->width)
@@ -40,7 +38,6 @@ int	ft_print_width_right(int size, t_format *spec)
 
 int	ft_print_prec(int size, t_format *spec)
 {
-	// TODO: Implement * option to the function
 	int	i;
 
 	if (spec->precision_set == 0)

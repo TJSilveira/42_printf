@@ -2,7 +2,6 @@
 
 int	ft_print_s(char *str, t_format *spec)
 {
-	// TODO: Implement * option to the function
 	int	i;
 	int	len;
 

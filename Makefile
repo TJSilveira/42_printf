@@ -9,6 +9,9 @@ LIBFT_DIR = ./libft/
 LIBFT = $(LIBFT_DIR)libft.a
 
 SRC_DIR = ./src/
+OBJS_DIR = ./objs/
+
+#BUILD_DIR = ./build/
 
 SRC_FILES = ft_printf.c \
 			ft_print_c.c \
@@ -27,25 +30,29 @@ SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))
 INCLUDES = -I ./includes/ -I $(LIBFT_DIR)
 
 #Object files
-OBJS = $(SRC:.c=.o)
-OBJS_TEST = $(SRC_TEST:.c=.o)
+OBJS_FILES = $(SRC_FILES:.c=.o)
+OBJS = $(addprefix $(OBJS_DIR),$(OBJS_FILES))
+OBJS_TEST = $(OBJS_DIR)test.o
 
 all: ${NAME}
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-${NAME}: ${OBJS}
+$(OBJS_DIR):
+	mkdir -p $(OBJS_DIR)
+
+${NAME}: ${OBJS} $(OBJS_DIR) ${LIBFT}
 	${CC} ${CFLAGS} ${OBJS} -L${LIBFT_DIR} -lft -o ${NAME}
 
-test: ${LIBFT} ${OBJS} ${OBJS_TEST}
+test: ${LIBFT} $(OBJS_DIR) ${OBJS} ${OBJS_TEST}
 	${CC} ${CFLAGS} ${OBJS} ${OBJS_TEST} -L${LIBFT_DIR} -lft -o test
 
-%.o: %.c
+$(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	${CC} ${CFLAGS} -c ${INCLUDES} $< -o $@
 
 clean:
-	rm -f ${OBJS} ${OBJS_TEST}
+	rm -rf ${OBJS_DIR}
 
 fclean: clean
 	rm -f ${NAME} test

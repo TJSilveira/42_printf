@@ -48,8 +48,7 @@ int	ft_print_prec(int size, t_format *spec)
 	if (size > spec->precision)
 		return (0);
 	i = 0;
-	printf("HAS NOT RETURNED\n");
-	while (i < BIGGER(spec->width, spec->precision) - size)
+	while (i < BIGGER(size, spec->precision) - size)
 	{
 		write(1, "0", 1);
 		i++;

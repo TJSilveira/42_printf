@@ -2,27 +2,29 @@
 
 int	ft_print_int(int nbr, t_format *spec)
 {
-	int counter;
+	int counter_total;
+	int counter_nbr;
 	long int	nbr_temp;
 
-	counter = 0;
+	counter_total = 0;
 	nbr_temp = nbr;
 	if (nbr_temp < 0)
 	{
-		counter++;
+		counter_total++;
 		nbr_temp = -nbr_temp;
 	}
 	while (nbr_temp>9)
 	{
 		nbr_temp = nbr_temp/10;
-		counter++;
+		counter_total++;
 	}
-	counter++;
+	counter_total++;
+	counter_nbr = counter_total;
 	if (spec->precision_set == 1 && nbr == 0)
 		return (ft_print_width_left(0, spec));
-	counter += ft_print_width_left(counter, spec);
-	counter += ft_print_prec(counter, spec);	
+	counter_total += ft_print_width_left(counter_total, spec);
+	counter_total += ft_print_prec(counter_nbr, spec);	
 	ft_putnbr_fd(nbr, 1);
-	counter += ft_print_width_right(counter, spec);
-	return (counter);
+	counter_total += ft_print_width_right(counter_total, spec);
+	return (counter_total);
 }

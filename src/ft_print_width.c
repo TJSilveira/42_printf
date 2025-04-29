@@ -7,7 +7,7 @@ int	ft_print_width_left(int size, t_format *a)
 	if (size > a->width)
 		return (0);
 	i = 0;
-	while (i < a->width - BIGGER(size, a->precision) && a->left_just == 0)
+	while (i < a->width - BIGGER(size, a->precision) - (a->hash * 2) && a->left_just == 0)
 	{
 		if (a->zero_pad == 1)
 			write(1, "0", 1);

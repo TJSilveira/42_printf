@@ -19,14 +19,49 @@ void	*ft_print_func(t_format *spec)
 	return (NULL);
 }
 
-int	add_flg(const char *str, int *i, t_format *format)
+void	add_flg_bonus(const char *str, int *i, t_format *format)
+{
+	if (str[*i] == ' ')
+	{
+		format->space = 1;
+		(*i)++;
+	}
+	if (str[*i] == '+')
+	{
+		format->sign = 1;
+		(*i)++;
+	}
+	if (str[*i] == '#')
+	{
+		format->hash = 1;
+		(*i)++;
+	}
+}
+
+int	add_flg(const char *str, int *i, t_format *format, va_list *ap)
 {
 	int	start;
 
+	add_flg_bonus(str, i, format);
 	start = *i;
-	while (str[*i] != ' ' && str[*i] != 0)
+	while (str[*i] != 0)
 	{
-		if (str[*i] == '0' && start == *i)
+		if (str[*i] == '#')
+		{
+			format->hash = 1;
+			(*i)++;
+		}
+		else if (str[*i] == ' ')
+		{
+			format->space = 1;
+			(*i)++;
+		}
+		else if (str[*i] == '+')
+		{
+			format->sign = 1;
+			(*i)++;
+		}
+		else if (str[*i] == '0' && format->precision_set == 0)
 		{
 			format->zero_pad = 1;
 			(*i)++;
@@ -40,6 +75,11 @@ int	add_flg(const char *str, int *i, t_format *format)
 		{
 			format->width = ft_atoi_simple(str, i);
 		}
+		else if (str[*i] == '*' && format->precision_set == 0)
+		{
+			format->width = va_arg(*ap, int);
+			(*i)++;
+		}
 		else if (str[*i] == '.')
 		{
 			format->precision_set = 1;
@@ -48,6 +88,11 @@ int	add_flg(const char *str, int *i, t_format *format)
 		else if (ft_isdigit(str[*i]) && format->precision_set == 1)
 		{
 			format->precision = ft_atoi_simple(str, i);
+		}
+		else if (str[*i] == '*' && format->precision_set == 1)
+		{
+			format->precision = va_arg(*ap, int);
+			(*i)++;
 		}
 		else if (is_incset(str[*i], "cspdiuxX"))
 		{
@@ -68,6 +113,9 @@ void	set_spec_zero(t_format	*spec)
 	spec->specifier = 0;
 	spec->width = 0;
 	spec->zero_pad = 0;
+	spec->hash = 0;
+	spec->sign = 0;
+	spec->space = 0;
 }
 
 int	ft_printf(const char *format, ...)
@@ -86,7 +134,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (add_flg(format, &i, &spec))
+			if (add_flg(format, &i, &spec, &ap))
 				res_len += ((int (*)(void *, t_format *))ft_print_func(&spec))(va_arg(ap, void *), &spec);
 			else
 				res_len += write(1, &format[i], 1);

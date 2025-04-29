@@ -8,10 +8,6 @@ int	main()
 	char	*ptr;
 
 	ptr = "This";	
-	printf("This %% i: % i\n", 2525);
-	printf("This %% 08i: % 08i\n", 2525);
-	printf("This %%+08i: %+08i\n", 2525);
-	printf("This %%i: %i\n", 2525);
 
 	printf("=======[BASIC FUNCTIONALITIES]=======\n\n");
 	counter_test = 0;

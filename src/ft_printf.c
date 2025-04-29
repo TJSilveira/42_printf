@@ -37,6 +37,7 @@ int	ft_printf(const char *format, ...)
 		else
 			len += write(1, &format[i], 1);
 		i++;
+		set_spec_zero(&t);
 	}
 	va_end(ap);
 	return (len);

@@ -2,7 +2,7 @@ NAME = libftprintf.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = #-Wall -Werror -Wextra
 
 #define 
 LIBFT_DIR = ./libft/
@@ -37,6 +37,8 @@ OBJS = $(addprefix $(OBJS_DIR),$(OBJS_FILES))
 OBJS_TEST = $(OBJS_DIR)test.o
 
 all: ${NAME}
+
+bonus: all
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)

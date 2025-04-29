@@ -21,19 +21,19 @@ void	*ft_print_func(t_format *spec)
 
 int	add_flg_aux_1(const char *str, int *i, t_format *format)
 {
-	if (str[*i] == '#')
+	if (str[*i] == '#' && format->hash == 0)
 	{
 		format->hash = 1;
 		(*i)++;
 		return (1);
 	}
-	else if (str[*i] == ' ')
+	else if (str[*i] == ' ' && format->space == 0)
 	{
 		format->space = 1;
 		(*i)++;
 		return (1);
 	}
-	else if (str[*i] == '+')
+	else if (str[*i] == '+' && format->sign == 0)
 	{
 		format->sign = 1;
 		(*i)++;

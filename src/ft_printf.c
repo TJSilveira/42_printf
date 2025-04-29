@@ -38,5 +38,6 @@ int	ft_printf(const char *format, ...)
 			len += write(1, &format[i], 1);
 		i++;
 	}
+	va_end(ap);
 	return (len);
 }

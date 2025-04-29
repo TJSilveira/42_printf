@@ -1,4 +1,4 @@
-NAME = ft_printf
+NAME = libftprintf.a
 
 CC = gcc
 
@@ -23,7 +23,8 @@ SRC_FILES = ft_printf.c \
 			ft_print_X.c \
 			ft_atoi_simple.c \
 			ft_print_width.c \
-			ft_putunsnbr_fd.c
+			ft_putunsnbr_fd.c \
+			ft_flags.c
 
 SRC_TEST = $(addprefix $(SRC_DIR),test.c)
 SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))
@@ -43,8 +44,9 @@ $(LIBFT):
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 
-${NAME}: ${OBJS} $(OBJS_DIR) ${LIBFT}
-	${CC} ${CFLAGS} ${OBJS} -L${LIBFT_DIR} -lft -o ${NAME}
+${NAME}: $(LIBFT) $(OBJS_DIR) $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
+	ranlib	$(NAME)
 
 test: ${LIBFT} $(OBJS_DIR) ${OBJS} ${OBJS_TEST}
 	${CC} ${CFLAGS} ${OBJS} ${OBJS_TEST} -L${LIBFT_DIR} -lft -o test
@@ -57,6 +59,8 @@ clean:
 
 fclean: clean
 	rm -f ${NAME} test
+
+re: fclean ${NAME}
 
 retest: fclean test 
 

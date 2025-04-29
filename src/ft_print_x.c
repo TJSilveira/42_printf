@@ -10,7 +10,7 @@ int	x_bonus_flags(t_format *spec)
 		ft_putstr_fd("0x", 1);
 		counter += 2;
 	}
-	return(counter);
+	return (counter);
 }
 
 int	ft_print_x(unsigned int nbr, t_format *spec)

@@ -1,110 +1,5 @@
 #include "ft_printf.h"
 
-void	*ft_print_func(t_format *spec)
-{
-	if (spec->specifier == 'c')
-		return (&ft_print_c);
-	else if (spec->specifier == 's')
-		return (&ft_print_s);
-	else if (spec->specifier == 'p')
-		return (&ft_print_p);
-	else if (spec->specifier == 'd' || spec->specifier == 'i')
-		return (&ft_print_int);
-	else if (spec->specifier == 'u')
-		return (&ft_print_u);
-	else if (spec->specifier == 'x')
-		return (&ft_print_x);
-	else if (spec->specifier == 'X')
-		return (&ft_print_X);
-	return (NULL);
-}
-
-void	add_flg_bonus(const char *str, int *i, t_format *format)
-{
-	if (str[*i] == ' ')
-	{
-		format->space = 1;
-		(*i)++;
-	}
-	if (str[*i] == '+')
-	{
-		format->sign = 1;
-		(*i)++;
-	}
-	if (str[*i] == '#')
-	{
-		format->hash = 1;
-		(*i)++;
-	}
-}
-
-int	add_flg(const char *str, int *i, t_format *format, va_list *ap)
-{
-	int	start;
-
-	add_flg_bonus(str, i, format);
-	start = *i;
-	while (str[*i] != 0)
-	{
-		if (str[*i] == '#')
-		{
-			format->hash = 1;
-			(*i)++;
-		}
-		else if (str[*i] == ' ')
-		{
-			format->space = 1;
-			(*i)++;
-		}
-		else if (str[*i] == '+')
-		{
-			format->sign = 1;
-			(*i)++;
-		}
-		else if (str[*i] == '0' && format->precision_set == 0)
-		{
-			format->zero_pad = 1;
-			(*i)++;
-		}
-		else if (str[*i] == '-' && start == *i)
-		{
-			format->left_just = 1;
-			(*i)++;
-		}
-		else if (ft_isdigit(str[*i]) && format->precision_set == 0)
-		{
-			format->width = ft_atoi_simple(str, i);
-		}
-		else if (str[*i] == '*' && format->precision_set == 0)
-		{
-			format->width = va_arg(*ap, int);
-			(*i)++;
-		}
-		else if (str[*i] == '.')
-		{
-			format->precision_set = 1;
-			(*i)++;
-		}
-		else if (ft_isdigit(str[*i]) && format->precision_set == 1)
-		{
-			format->precision = ft_atoi_simple(str, i);
-		}
-		else if (str[*i] == '*' && format->precision_set == 1)
-		{
-			format->precision = va_arg(*ap, int);
-			(*i)++;
-		}
-		else if (is_incset(str[*i], "cspdiuxX"))
-		{
-			format->specifier = str[*i];
-			return (1);
-		}
-		else
-			return (0);
-	}
-	return (0);
-}
-
 void	set_spec_zero(t_format	*spec)
 {
 	spec->left_just = 0;
@@ -121,27 +16,27 @@ void	set_spec_zero(t_format	*spec)
 int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
-	int			res_len;
+	int			len;
 	int			i;
-	t_format	spec;
+	t_format	t;
 
 	va_start(ap, format);
-	res_len = 0;
+	len = 0;
 	i = 0;
-	set_spec_zero(&spec);
+	set_spec_zero(&t);
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			if (add_flg(format, &i, &spec, &ap))
-				res_len += ((int (*)(void *, t_format *))ft_print_func(&spec))(va_arg(ap, void *), &spec);
+			if (add_flg(format, &i, &t, &ap))
+				len += ((int (*)(void *, t_format *))ft_print_func(&t))(va_arg(ap, void *), &t);
 			else
-				res_len += write(1, &format[i], 1);
+				len += write(1, &format[i], 1);
 		}
 		else
-			res_len += write(1, &format[i], 1);
+			len += write(1, &format[i], 1);
 		i++;
 	}
-	return (res_len);
+	return (len);
 }

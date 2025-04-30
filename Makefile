@@ -2,7 +2,7 @@ NAME = libftprintf.a
 
 CC = gcc
 
-CFLAGS = #-Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 #define 
 LIBFT_DIR = ./libft/
@@ -10,8 +10,6 @@ LIBFT = $(LIBFT_DIR)libft.a
 
 SRC_DIR = ./src/
 OBJS_DIR = ./objs/
-
-#BUILD_DIR = ./build/
 
 SRC_FILES = ft_printf.c \
 			ft_print_c.c \

@@ -1,13 +1,18 @@
 #include "ft_printf.h"
 
-int	x_bonus_flags(t_format *spec)
+int	x_bonus_flags(t_format *spec, char option)
 {
 	int	counter;
 
 	counter = 0;
-	if (spec->hash == 1)
+	if (spec->hash == 1 && option == 'x')
 	{
 		ft_putstr_fd("0x", 1);
+		counter += 2;
+	}
+	else if (spec->hash == 1 && option == 'X')
+	{
+		ft_putstr_fd("0X", 1);
 		counter += 2;
 	}
 	return (counter);
@@ -33,7 +38,7 @@ int	ft_print_x(unsigned int nbr, t_format *spec)
 		return (ft_print_width_left(0, spec));
 	size_nbr = size_total;
 	size_total += ft_print_width_left(size_total, spec);
-	size_total += x_bonus_flags(spec);
+	size_total += x_bonus_flags(spec, 'x');
 	size_total += ft_print_prec(size_nbr, spec);
 	while ((i) >= 0)
 		write(1, &array_temp[i--], 1);

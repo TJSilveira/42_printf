@@ -33,7 +33,7 @@ int		add_flg(const char *str, int *i, t_format *format, va_list *ap);
 int		ft_print_width_left(int size, t_format *spec);
 int		ft_print_width_right(int size, t_format *spec);
 int		ft_print_prec(int size, t_format *spec);
-int		x_bonus_flags(t_format *spec);
+int		x_bonus_flags(t_format *spec, char option);
 void	ft_putunsnbr_fd(unsigned int n, int fd);
 void	ft_print_int_aux(unsigned int nbr, t_format *spec, int c_nbr, int *c_total);
 int		add_flg_aux_1(const char *str, int *i, t_format *format);

@@ -16,7 +16,7 @@ int	ft_print_X(unsigned int nbr, t_format *spec)
 	}
 	array_temp[i] = "0123456789ABCDEF"[nbr % 16];
 	size_total = i + 1;
-	if (spec->precision_set == 1 && nbr == 0)
+	if (spec->precision_set == 1 && spec->precision == 0 && nbr == 0)
 		return (ft_print_width_left(0, spec));
 	size_nbr = size_total;
 	size_total += ft_print_width_left(size_total, spec);

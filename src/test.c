@@ -331,6 +331,15 @@ int	main()
 	counter_test += ft_printf("This %%#13.10x: %#13.10x\n", 21354489);
 	counter_oficial += printf("This %%#13.10x: %#13.10x\n", 21354489);
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%.1x: %.1x\n", 0);
+	counter_oficial += printf("This %%.1x: %.1x\n", 0);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%.11x: %.11x\n", LONG_MIN);
+	counter_oficial += printf("This %%.11x: %.11x\n", LONG_MIN);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%.8x %%.9x %%.10x %%.11x %%.12x %%.13x %%.14x: %.8x %.9x %.10x %.11x %.12x %.13x %.14x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	counter_oficial += printf("This %%.8x %%.9x %%.10x %%.11x %%.12x %%.13x %%.14x: %.8x %.9x %.10x %.11x %.12x %.13x %.14x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 
 	printf("=======[ft_print_X]=======\n\n");
 	counter_test += ft_printf("This %%25X: %25X\n", 21354489);

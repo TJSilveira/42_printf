@@ -168,6 +168,17 @@ int	main()
 	counter_test += ft_printf("This %%-*s: %-*s\n", 25, "Another string");
 	counter_oficial += printf("This %%-*s: %-*s\n", 25, "Another string");
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%.s: %.s\n", "-");
+	counter_oficial += printf("This %%.s: %.s\n", "-");
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += (ft_printf("This %%.s: %.1s %.2s %.3s %.4s\n", " - ", "", "4", ""));
+	counter_oficial += (printf("This %%.s: %.1s %.2s %.3s %.4s\n", " - ", "", "4", ""));
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += (ft_printf("This %%.s: %.2s %.3s %.4s %.5s %.1s\n", " - ", "", "4", "", "2 "));
+	counter_oficial += (printf("This %%.s: %.2s %.3s %.4s %.5s %.1s\n", " - ", "", "4", "", "2 "));
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+
+
 
 	printf("=======[ft_print_int]=======\n\n");
 	counter_test += ft_printf("This %%25d: %25d\n", 257);

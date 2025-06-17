@@ -54,7 +54,7 @@ int	ft_print_int(int nbr, t_format *spec)
 	}
 	counter_total++;
 	counter_nbr = counter_total;
-	if (spec->precision_set == 1 && nbr == 0)
+	if (spec->precision_set == 1 && spec->precision == 0 && nbr == 0)
 		return (ft_print_width_left(0, spec));
 	ft_print_int_aux(nbr_final, spec, counter_nbr, &counter_total);
 	return (counter_total);

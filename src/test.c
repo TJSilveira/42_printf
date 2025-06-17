@@ -6,8 +6,10 @@ int	main()
 	int		counter_test;
 	int		counter_oficial;
 	char	*ptr;
+	char	*ptr_null;
 
-	ptr = "This";	
+	ptr = "This";
+	ptr_null = NULL;
 
 	printf("=======[BASIC FUNCTIONALITIES]=======\n\n");
 	counter_test = 0;
@@ -20,6 +22,10 @@ int	main()
 	printf("=======[ft_print_s]=======\n\n");
 	counter_test += ft_printf("This %%s: %s\n", ptr);
 	counter_oficial += printf("This %%s: %s\n", ptr);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	
+	counter_test += ft_printf("This %%s: %s\n", ptr_null);
+	counter_oficial += printf("This %%s: %s\n", ptr_null);
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
 	
 	printf("=======[ft_print_c]=======\n\n");

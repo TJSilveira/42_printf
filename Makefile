@@ -45,8 +45,10 @@ $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 
 ${NAME}: $(LIBFT) $(OBJS_DIR) $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
-	ranlib	$(NAME)
+	ar -x $(LIBFT)
+	ar -rcs $(NAME) $(OBJS) *.o
+	rm -f *.o
+	ranlib $(NAME)
 
 test: ${LIBFT} $(OBJS_DIR) ${OBJS} ${OBJS_TEST}
 	${CC} ${CFLAGS} ${OBJS} ${OBJS_TEST} -L${LIBFT_DIR} -lft -o test

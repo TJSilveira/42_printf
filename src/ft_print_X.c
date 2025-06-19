@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_print_X(unsigned int nbr, t_format *spec)
+int	ft_print_bigx(unsigned int nbr, t_format *spec)
 {
 	char	array_temp[50];
 	int		i;

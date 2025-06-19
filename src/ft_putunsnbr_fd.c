@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-void ft_putunsnbr_fd(unsigned int n, int fd)
+void	ft_putunsnbr_fd(unsigned int n, int fd)
 {
 	char	ch;
 

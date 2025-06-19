@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "libft.h"
-# define BIGGER(x,y) ((x<=y)*y+(x>y)*x)
 
 typedef struct s_format
 {
@@ -57,7 +56,7 @@ int		ft_print_x(unsigned int nbr, t_format *spec);
 int		x_bonus_flags(t_format *spec, unsigned int nbr, char option);
 
 /* ft_print_X.c */
-int		ft_print_X(unsigned int nbr, t_format *spec);
+int		ft_print_bigx(unsigned int nbr, t_format *spec);
 
 /* ft_atoi_simple.c */
 int		ft_atoi_simple(const char *nptr, int *i);

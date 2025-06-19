@@ -27,7 +27,7 @@ void	*ft_print_func(t_format *spec)
 	else if (spec->specifier == 'x')
 		return (&ft_print_x);
 	else if (spec->specifier == 'X')
-		return (&ft_print_X);
+		return (&ft_print_bigx);
 	return (NULL);
 }
 

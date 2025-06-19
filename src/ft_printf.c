@@ -27,8 +27,8 @@ void	set_spec_zero(t_format	*spec)
 
 static void	init_var(int *len, int *i, t_format *t)
 {
-	len = 0;
-	i = 0;
+	*len = 0;
+	*i = 0;
 	set_spec_zero(t);
 }
 

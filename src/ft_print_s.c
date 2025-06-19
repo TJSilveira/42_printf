@@ -16,23 +16,23 @@ int	ft_print_s(char *str, t_format *spec)
 	if (!str)
 	{
 		len = 6;
-		len += ft_print_width_left(len, spec);
+		len += ft_print_width_left_cs(len, spec);
 		write(1, "(null)", 6);
-		len += ft_print_width_right(len, spec);
+		len += ft_print_width_right_cs(len, spec);
 		return (len);
 	}
 	len = ft_strlen(str);
-	i = ft_print_width_left(len, spec);
+	i = ft_print_width_left_cs(len, spec);
 	if (spec->precision_set)
 	{
 		write(1, str, min(spec->precision, len));
-		i += ft_print_width_right(len, spec);
+		i += ft_print_width_right_cs(len, spec);
 		return (min(spec->precision, len) + i);
 	}
 	else
 	{
 		write(1, str, len);
-		i += ft_print_width_right(len, spec);
+		i += ft_print_width_right_cs(len, spec);
 		return (len + i);
 	}
 }

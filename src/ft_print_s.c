@@ -15,8 +15,11 @@ int	ft_print_s(char *str, t_format *spec)
 
 	if (!str)
 	{
+		len = 6;
+		len += ft_print_width_left(len, spec);
 		write(1, "(null)", 6);
-		return (6);
+		len += ft_print_width_right(len, spec);
+		return (len);
 	}
 	len = ft_strlen(str);
 	i = ft_print_width_left(len, spec);

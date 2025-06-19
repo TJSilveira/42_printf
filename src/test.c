@@ -238,6 +238,34 @@ int	main()
 	counter_test += ft_printf("This %%.8d %%.9d %%.10d %%.11d %%.12d %%.13d %%.14d: %.8d %.9d %.10d %.11d %.12d %.13d %.14d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 	counter_oficial += printf("This %%.8d %%.9d %%.10d %%.11d %%.12d %%.13d %%.14d: %.8d %.9d %.10d %.11d %.12d %.13d %.14d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%04d: %04d\n", -14);
+	counter_oficial += printf("This %%04d: %04d\n", -14);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%05d: %05d\n", -15);
+	counter_oficial += printf("This %%05d: %05d\n", -15);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%06d: %06d\n", -16);
+	counter_oficial += printf("This %%06d: %06d\n", -16);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%011d: %011d\n", LONG_MAX);
+	counter_oficial += printf("This %%011d: %011d\n", LONG_MAX);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%012d: %012d\n", LONG_MIN);
+	counter_oficial += printf("This %%012d: %012d\n", LONG_MIN);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%013d: %013d\n", UINT_MAX);
+	counter_oficial += printf("This %%013d: %013d\n", UINT_MAX);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%014d: %014d\n", ULONG_MAX);
+	counter_oficial += printf("This %%014d: %014d\n", ULONG_MAX);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%015d: %015d\n", 9223372036854775807LL);
+	counter_oficial += printf("This %%015d: %015d\n", 9223372036854775807LL);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+	counter_test += ft_printf("This %%09d %%010d %%011d %%012d %%013d %%014d %%015d: %09d %010d %011d %012d %013d %014d %015d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	counter_oficial += printf("This %%09d %%010d %%011d %%012d %%013d %%014d %%015d: %09d %010d %011d %012d %013d %014d %015d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf("\nResult: %i\nExpect: %i\n", counter_test, counter_oficial);
+
 
 	printf("=======[ft_print_p]=======\n\n");
 	counter_test += ft_printf("This %%25p: %25p\n", ptr);

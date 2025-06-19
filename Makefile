@@ -23,7 +23,7 @@ SRC_FILES = ft_printf.c \
 			ft_print_width.c \
 			ft_putunsnbr_fd.c \
 			ft_flags.c \
-			ft_print_width_cs.c
+			ft_print_width_cs.c \
 
 SRC_TEST = $(addprefix $(SRC_DIR),test.c)
 SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))
@@ -59,9 +59,11 @@ $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 
 clean:
 	rm -rf ${OBJS_DIR}
+	rm -rf ./libft/*.o
 
 fclean: clean
 	rm -f ${NAME} test
+	rm -f ./libft/libft.a
 
 re: fclean ${NAME}
 

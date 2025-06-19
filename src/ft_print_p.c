@@ -8,7 +8,13 @@ int	ft_print_p(void *str, t_format *spec)
 	int					size;
 
 	if (!str)
-		return (write(1, "(nil)", 5));
+	{
+		size = 5;
+		size += ft_print_width_left(size, spec);
+		write(1, "(nil)", 5);
+		size += ft_print_width_right(size, spec);
+		return (size);
+	}
 	i = 0;
 	nbr = (unsigned long int)str;
 	while (nbr >= 16)

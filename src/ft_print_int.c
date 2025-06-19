@@ -25,8 +25,8 @@ int	int_bonus_flags(t_format *spec)
 
 void	ft_print_int_aux(unsigned int nbr, t_format *spec, int c_nbr, int *c_total)
 {
-	*c_total += int_bonus_flags(spec);
 	*c_total += ft_print_width_left(*c_total, spec);
+	*c_total += int_bonus_flags(spec);
 	*c_total += ft_print_prec(c_nbr, spec);
 	ft_putunsnbr_fd(nbr, 1);
 	*c_total += ft_print_width_right(*c_total, spec);

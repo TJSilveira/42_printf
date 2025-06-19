@@ -1,4 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsilveir <tsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/19 17:24:58 by tsilveir          #+#    #+#             */
+/*   Updated: 2025/06/19 17:25:00 by tsilveir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
+
+static int	nil_check(int size, t_format *spec)
+{
+	size = 5;
+	size += ft_print_width_left(size, spec);
+	write(1, "(nil)", 5);
+	size += ft_print_width_right(size, spec);
+	return (size);
+}
 
 int	ft_print_p(void *str, t_format *spec)
 {
@@ -8,13 +29,7 @@ int	ft_print_p(void *str, t_format *spec)
 	int					size;
 
 	if (!str)
-	{
-		size = 5;
-		size += ft_print_width_left(size, spec);
-		write(1, "(nil)", 5);
-		size += ft_print_width_right(size, spec);
-		return (size);
-	}
+		return (nil_check(size, spec));
 	i = 0;
 	nbr = (unsigned long int)str;
 	while (nbr >= 16)

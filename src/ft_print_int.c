@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsilveir <tsilveir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/19 17:24:48 by tsilveir          #+#    #+#             */
+/*   Updated: 2025/06/19 17:24:51 by tsilveir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	int_bonus_flags(t_format *spec)
@@ -20,10 +32,10 @@ int	int_bonus_flags(t_format *spec)
 		ft_putstr_fd(" ", 1);
 		counter += 1;
 	}
-	return(counter);
+	return (counter);
 }
 
-void	ft_print_int_aux(unsigned int nbr, t_format *spec, int c_nbr, int *c_total)
+void	ft_print_int_aux(size_t nbr, t_format *spec, int c_nbr, int *c_total)
 {
 	if (spec->zero_pad == 1)
 	{

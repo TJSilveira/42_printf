@@ -83,5 +83,4 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_putstr_var_fd(char *s, int start, int end, int fd);
 int		is_incset(char ch, char const *set);
 
-
 #endif

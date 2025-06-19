@@ -4,8 +4,9 @@ int	ft_print_c(char c, t_format *spec)
 {
 	int	i;
 
-	i = ft_print_width_left(1, spec);
+	// printf("Width: %i\n", spec->width);
+	i = ft_print_width_left_cs(1, spec);
 	write(1, &c, 1);
-	i += ft_print_width_right(1, spec);
+	i += ft_print_width_right_cs(1, spec);
 	return (i + 1);
 }

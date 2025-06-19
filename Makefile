@@ -22,7 +22,8 @@ SRC_FILES = ft_printf.c \
 			ft_atoi_simple.c \
 			ft_print_width.c \
 			ft_putunsnbr_fd.c \
-			ft_flags.c
+			ft_flags.c \
+			ft_print_width_cs.c
 
 SRC_TEST = $(addprefix $(SRC_DIR),test.c)
 SRC = $(addprefix $(SRC_DIR),$(SRC_FILES))

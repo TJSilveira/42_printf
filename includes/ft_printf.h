@@ -43,4 +43,9 @@ int		add_flg_aux_1(const char *str, int *i, t_format *format);
 int		add_flg_aux_2(const char *str, int *i, t_format *format, va_list *ap);
 int		add_flg(const char *str, int *i, t_format *format, va_list *ap);
 
+/* ft_print_width_cs.c */
+int	ft_print_width_left_cs(int size, t_format *a);
+int	ft_print_width_right_cs(int size, t_format *spec);
+
+
 #endif

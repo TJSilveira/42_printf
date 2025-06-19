@@ -83,6 +83,4 @@ int		add_flg_aux_1(const char *str, int *i, t_format *format);
 int		add_flg_aux_2(const char *str, int *i, t_format *format, va_list *ap);
 int		add_flg(const char *str, int *i, t_format *format, va_list *ap);
 
-
-
 #endif

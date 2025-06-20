@@ -12,8 +12,10 @@
 
 #include "ft_printf.h"
 
-static int	nil_check(int size, t_format *spec)
+static int	nil_check(t_format *spec)
 {
+	int	size;
+
 	size = 5;
 	size += ft_print_width_left(size, spec);
 	write(1, "(nil)", 5);
@@ -29,7 +31,7 @@ int	ft_print_p(void *str, t_format *spec)
 	int					size;
 
 	if (!str)
-		return (nil_check(size, spec));
+		return (nil_check(spec));
 	i = 0;
 	nbr = (unsigned long int)str;
 	while (nbr >= 16)

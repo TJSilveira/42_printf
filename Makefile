@@ -1,8 +1,12 @@
 NAME = libftprintf.a
 
-CC = gcc
+CC = clang
 
-CFLAGS = #-Wall -Werror -Wextra
+ifneq ($(firstword $(MAKECMDGOALS)),test)
+    CFLAGS = -Wall -Werror -Wextra
+else
+    CFLAGS = 
+endif
 
 #define 
 LIBFT_DIR = ./libft/
@@ -62,11 +66,11 @@ clean:
 	rm -rf ./libft/*.o
 
 fclean: clean
-	rm -f ${NAME} test
+	rm -f ${NAME} test	
 	rm -f ./libft/libft.a
 
 re: fclean ${NAME}
 
-retest: fclean test 
+retest: fclean test
 
 .PHONY: all clean fclean re
